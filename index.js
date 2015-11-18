@@ -1,0 +1,47 @@
+'use strict';
+
+var gutil = require('gulp-util');
+var through = require('through2');
+var JadeLint = require('jade-lint');
+var RcLoader = require('rcloader');
+
+module.exports = function(options) {
+
+  var rc = new RcLoader('.jade-lintrc', options);
+
+  return through.obj(function(file, enc, cb) {
+    if (file.isNull()) {
+      return cb(null, file);
+    }
+
+    if (file.isStream()) {
+      return cb(new gutil.PluginError('gulp-jade-lint', 'streaming not supported'));
+    }
+
+    rc.for(file.path, function(errRc, conf) {
+      if (errRc) {
+        return cb(new gutil.PluginError('gulp-jade-lint', errRc));
+      }
+
+      try {
+        var linter = new JadeLint();
+        linter.configure(conf);
+
+        var errors = linter.checkFile(file.path);
+
+        if (errors.length) {
+          gutil.log(gutil.colors.cyan(errors.length) + ' issues found in ' + gutil.colors.magenta(file.path));
+          errors.forEach(function(error) {
+            gutil.log(error.message);
+          });
+        }
+      } catch (errLint) {
+        return cb(new gutil.PluginError('gulp-jade-lint', errLint));
+      }
+
+      cb(null, file);
+    });
+
+  });
+
+};
