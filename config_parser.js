@@ -10,8 +10,7 @@ class ConfigParser {
       try {
         var defaultConfig = require(configPath);
         return _.extend({}, defaultConfig, _.omit(config, 'extends'));
-      }
-      catch (e) {
+      } catch (e) {
         // no prob
       }
     }
