@@ -4,9 +4,9 @@ var gutil = require('gulp-util');
 var through = require('through2');
 var JadeLint = require('jade-lint');
 var RcLoader = require('rcloader');
+var configParser = require('./config_parser');
 
 module.exports = function(options) {
-
   var rc = new RcLoader('.jade-lintrc', options);
 
   return through.obj(function(file, enc, cb) {
@@ -25,7 +25,7 @@ module.exports = function(options) {
 
       try {
         var linter = new JadeLint();
-        linter.configure(conf);
+        linter.configure(configParser(conf));
 
         var errors = linter.checkFile(file.path);
 
