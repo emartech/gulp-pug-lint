@@ -1,10 +1,12 @@
 'use strict';
 
 var _ = require('lodash');
+var path = require('path');
+var util = require('util');
 
 module.exports = function configParser(config) {
   if (config.extends) {
-    var configPath = process.cwd() + '/node_modules/jade-lint-config-' + config.extends + '/index.js';
+    var configPath = path.resolve(util.format('node_modules/jade-lint-config-%s', config.extends), 'index.js');
 
     try {
       var defaultConfig = require(configPath);
