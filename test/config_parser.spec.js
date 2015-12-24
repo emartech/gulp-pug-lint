@@ -1,6 +1,6 @@
 'use strict';
 
-var emarsysConfig = require('jade-lint-config-emarsys');
+var emarsysConfig = require('pug-lint-config-emarsys');
 var expect = require('chai').expect;
 var configParser = require('../config_parser');
 

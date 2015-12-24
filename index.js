@@ -2,12 +2,12 @@
 
 var gutil = require('gulp-util');
 var through = require('through2');
-var JadeLint = require('jade-lint');
+var PugLint = require('pug-lint');
 var RcLoader = require('rcloader');
 var configParser = require('./config_parser');
 
 module.exports = function(options) {
-  var rc = new RcLoader('.jade-lintrc', options);
+  var rc = new RcLoader('.pug-lintrc', options);
 
   return through.obj(function(file, enc, cb) {
     if (file.isNull()) {
@@ -15,16 +15,16 @@ module.exports = function(options) {
     }
 
     if (file.isStream()) {
-      return cb(new gutil.PluginError('gulp-jade-lint', 'streaming not supported'));
+      return cb(new gutil.PluginError('gulp-pug-lint', 'streaming not supported'));
     }
 
     rc.for(file.path, function(errRc, conf) {
       if (errRc) {
-        return cb(new gutil.PluginError('gulp-jade-lint', errRc));
+        return cb(new gutil.PluginError('gulp-pug-lint', errRc));
       }
 
       try {
-        var linter = new JadeLint();
+        var linter = new PugLint();
         linter.configure(configParser(conf));
 
         var errors = linter.checkFile(file.path);
@@ -36,7 +36,7 @@ module.exports = function(options) {
           });
         }
       } catch (errLint) {
-        return cb(new gutil.PluginError('gulp-jade-lint', errLint));
+        return cb(new gutil.PluginError('gulp-pug-lint', errLint));
       }
 
       cb(null, file);

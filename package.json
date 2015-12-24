@@ -1,9 +1,9 @@
 {
-  "name": "gulp-jade-lint",
+  "name": "gulp-pug-lint",
   "version": "0.1.4",
-  "description": "Gulp plugin for jade-lint",
-  "homepage": "https://github.com/emartech/gulp-jade-lint",
-  "repository": "git://github.com/emartech/gulp-jade-lint.git",
+  "description": "Gulp plugin for pug-lint",
+  "homepage": "https://github.com/emartech/gulp-pug-lint",
+  "repository": "git://github.com/emartech/gulp-pug-lint.git",
   "main": "index.js",
   "scripts": {
     "test": "mocha test/*.spec.js && eslint *.js"
@@ -11,14 +11,14 @@
   "keywords": [
     "gulp",
     "plugin",
-    "jade",
+    "pug",
     "lint"
   ],
   "author": "Emarsys",
   "license": "MIT",
   "dependencies": {
     "gulp-util": "^3.0.7",
-    "jade-lint": "^2.0.2",
+    "pug-lint": "^2.0.2",
     "lodash": "^3.10.1",
     "rcloader": "^0.1.4",
     "through2": "^2.0.0"
@@ -27,7 +27,7 @@
     "chai": "^3.4.1",
     "eslint": "^1.9.0",
     "eslint-config-emarsys": "^1.0.0",
-    "jade-lint-config-emarsys": "^1.0.0",
+    "pug-lint-config-emarsys": "^1.0.0",
     "mocha": "^2.3.4"
   }
 }

@@ -6,7 +6,7 @@ var util = require('util');
 
 module.exports = function configParser(config) {
   if (config.extends) {
-    var configPath = path.resolve(util.format('node_modules/jade-lint-config-%s', config.extends), 'index.js');
+    var configPath = path.resolve(util.format('node_modules/pug-lint-config-%s', config.extends), 'index.js');
 
     try {
       var defaultConfig = require(configPath);
