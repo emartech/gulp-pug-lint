@@ -17,17 +17,17 @@
   "author": "Emarsys",
   "license": "MIT",
   "dependencies": {
-    "gulp-util": "^3.0.7",
-    "pug-lint": "^2.0.2",
-    "lodash": "^3.10.1",
-    "rcloader": "^0.1.4",
-    "through2": "^2.0.0"
+    "gulp-util": "3.0.7",
+    "pug-lint": "2.1.1",
+    "lodash": "3.10.1",
+    "rcloader": "0.1.4",
+    "through2": "2.0.0"
   },
   "devDependencies": {
-    "chai": "^3.4.1",
-    "eslint": "^1.9.0",
-    "eslint-config-emarsys": "^1.0.0",
-    "pug-lint-config-emarsys": "^1.0.0",
-    "mocha": "^2.3.4"
+    "chai": "3.4.1",
+    "eslint": "1.10.3",
+    "eslint-config-emarsys": "1.0.0",
+    "pug-lint-config-emarsys": "1.0.1",
+    "mocha": "2.3.4"
   }
 }
