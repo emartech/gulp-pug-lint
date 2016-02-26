@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "gulp-util": "3.0.7",
-    "pug-lint": "2.1.2",
+    "pug-lint": "2.1.6",
     "lodash": "3.10.1",
     "rcloader": "0.1.4",
     "through2": "2.0.0"
