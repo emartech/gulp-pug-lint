@@ -30,7 +30,7 @@ module.exports = function(options) {
         var errors = linter.checkFile(file.path);
 
         if (errors.length) {
-          throw new gutil.PluginError('gulp-pug-lint', errors);
+          throw new gutil.PluginError('gulp-pug-lint', errors[0].message);
         }
       } catch (errLint) {
         return cb(new gutil.PluginError('gulp-pug-lint', errLint));
