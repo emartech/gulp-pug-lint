@@ -8,6 +8,7 @@ var configParser = require('./config_parser');
 
 module.exports = function(options) {
   var rc = new RcLoader('.pug-lintrc', options);
+  var totalErrors = 0;
 
   return through.obj(function(file, enc, cb) {
     if (file.isNull()) {
@@ -34,6 +35,7 @@ module.exports = function(options) {
           errors.forEach(function(error) {
             gutil.log(error.message);
           });
+          totalErrors += errors.length;
         }
       } catch (errLint) {
         return cb(new gutil.PluginError('gulp-pug-lint', errLint));
@@ -42,6 +44,12 @@ module.exports = function(options) {
       cb(null, file);
     });
 
+  }, function(cb) {
+    if (options && options.failOnError && totalErrors > 0) {
+      cb(new gutil.PluginError('gulp-pug-lint', 'Failed with ' + totalErrors + ' errors'));
+    } else {
+      cb();
+    }
   });
 
 };
